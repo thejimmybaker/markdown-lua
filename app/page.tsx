@@ -5,10 +5,26 @@ import MarkdownDisplay from "@/components/MarkdownDisplay";
 import { Card, CardContent } from "@/components/ui/card";
 import { Scale, Brain, FileText, Sparkles } from "lucide-react";
 import Image from "next/image";
+import TermsOfServiceModal from "@/components/TermsOfServiceModal";
 
 export default function Home() {
+  const [showTos, setShowTos] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const accepted = localStorage.getItem("tosAccepted");
+      if (!accepted) setShowTos(true);
+    }
+  }, []);
+
+  const handleTosClose = () => {
+    localStorage.setItem("tosAccepted", "true");
+    setShowTos(false);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-blue-50">
+      <TermsOfServiceModal isOpen={showTos} onClose={handleTosClose} />
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-40">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
