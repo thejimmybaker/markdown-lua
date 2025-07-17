@@ -127,7 +127,7 @@ export default function MarkdownDisplay({ initialUrl = "" }: MarkdownDisplayProp
                     return !isInline && match ? (
                       <div className="overflow-x-auto">
                         <SyntaxHighlighter
-                          style={tomorrow as any}
+                          style={tomorrow as { [key: string]: React.CSSProperties }}
                           language={match[1]}
                           PreTag="div"
                           className="text-sm"
