@@ -22,9 +22,13 @@ export default function Home() {
     setShowTos(false);
   };
 
+  const handleTosDecline = () => {
+    window.location.href = "https://lualegal.ai";
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-blue-50">
-      <TermsOfServiceModal isOpen={showTos} onClose={handleTosClose} />
+      <TermsOfServiceModal isOpen={showTos} onClose={handleTosClose} onDecline={handleTosDecline} />
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-40">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">

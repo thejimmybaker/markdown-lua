@@ -15,11 +15,13 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 interface TermsOfServiceModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onDecline?: () => void;
 }
 
 export default function TermsOfServiceModal({
   isOpen,
   onClose,
+  onDecline,
 }: TermsOfServiceModalProps) {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -96,7 +98,7 @@ export default function TermsOfServiceModal({
         <DialogFooter className="flex flex-col sm:flex-row gap-2">
           <Button
             variant="outline"
-            onClick={onClose}
+            onClick={onDecline ? onDecline : onClose}
             className="flex-1 sm:flex-none"
           >
             Decline
